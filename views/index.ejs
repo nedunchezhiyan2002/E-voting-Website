@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs") -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>My EJS App</title>
+</head>
+<body> 
+  <div class="container-xl big-padding ">
+    <div class="row text-center  section-title">
+      <h2 class="fs-4">IITM - Online Poll</h2>
+      <p>
+        <% if (message) { %>
+          <%= message %>
+        <% } %>
+      </p>
+
+      <div class="row text-white text-center ">
+          <div class = "colored-box">
+            <a href="/hostel"><h1>Hostel Affairs Secratary</h1></a>
+          </div>
+        
+      </div>
+
+      <div class="row text-white text-center  ">
+        <div class = "colored-box"><a href="/general"><h1>General Affairs Secratary</h1></a></div>
+      </div>
+
+      <div class="row text-white  text-center ">
+        <div class = "colored-box"><a href="/sports"><h1>Sports Affairs Secratary</h1></a></div>
+      </div>
+
+      <div class="row text-white  text-center ">
+        <div class = "colored-box"><a href="/cultural"><h1>Cultural Affairs Secratary</h1></a></div>
+      </div>
+
+      
+
+
+      
+       
+    </div>
+  </div>
+  
+</body>
+</html>
+
+
+<%- include("partials/footer.ejs") -%>
