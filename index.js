@@ -7,12 +7,18 @@ app.use(express.static("public"));
 const port = 3000
 
 app.set('view engine', 'ejs')
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-)
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+
+
+mongoose.connect('mongodb+srv://nedunchezhiyan1010:K7fNvT.HAX9@cluster0.cw74fey.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+    console.log('database connected')
+  }).catch(err => {
+    console.log('error while connecting to database', err)
+  })
+
+const itemsSchema = new mongoose.Schema({candidates: String,vote: Number});
+const Item = mongoose.model('results', itemsSchema);
 
 app.get('/', (req, res) => {
   const message = 'Select Your Candidate!'
@@ -21,37 +27,37 @@ app.get('/', (req, res) => {
   })
 })
 
+app.get('/results', async (req, res) => {
+  try {
+    results = await Item.find({}); // Update the global results array
+    console.log('Results:', results); // Log the updated results array
+
+    res.render('results', {
+      results: results, // Pass the results array to the results.ejs page
+    });
+  } catch (error) {
+    console.error('Error fetching results:', error);
+    res.status(500).send('Error fetching results');
+  }
+});
+
+
 // Define a single route handler function
 app.get("/:page", (req, res) => {
   const page = req.params.page; // Extract the page parameter from the request
 
   // Check the page parameter and render the corresponding template
   switch (page) {
-    case "hostel":
-    case "general":
-    case "cultural":
-    case "sports":
+    case "position1":
+    case "position2":
+    case "position3":
+    case "position4":
       res.render(page); // Render the corresponding template
       break;
     default:
       res.status(404).send("Page not found"); // Handle invalid page requests
   }
 });
-
-
-
-mongoose.connect('mongodb://0.0.0.0:27017/pollbooth').then(() => {
-    console.log('database connected')
-  }).catch(err => {
-    console.log('error while connecting to database', err)
-  })
-
-const itemsSchema = new mongoose.Schema({
-  candidates: String,
-  vote: Number
-}, { collection: 'results' });
-
-const Item = mongoose.model('results', itemsSchema);
 
 app.post('/submit', (req, res) => {
   const selectedValue = req.body.selectField // Assuming 'selectField' is the name of your select field
@@ -76,4 +82,8 @@ app.post('/submit', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)
+  
 })
+
+
+
