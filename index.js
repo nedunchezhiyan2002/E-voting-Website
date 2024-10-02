@@ -1,25 +1,49 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-const app = express()
+const app = express();
 app.use(express.static("public"));
-const port = 3000
+const port = 3000;
 
-app.set('view engine', 'ejs')
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-)
-app.use(bodyParser.json())
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  const message = 'Select Your Candidate!'
-  res.render('index', {
-    message: message
+mongoose
+  .connect(
+    "mongodb+srv://nedunchezhiyan1010:K7fNvT.HAX9@cluster0.cw74fey.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => {
+    console.log("database connected");
   })
-})
+  .catch((err) => {
+    console.log("error while connecting to database", err);
+  });
+
+const itemsSchema = new mongoose.Schema({ candidates: String, vote: Number });
+const Item = mongoose.model("results", itemsSchema);
+
+app.get("/", (req, res) => {
+  const message = "Select Your Candidate for the respective department!";
+  res.render("index", {
+    message: message,
+  });
+});
+
+app.get("/results", async (req, res) => {
+  try {
+    results = await Item.find({}); // Update the global results array
+    console.log("Results:", results); // Log the updated results array
+
+    res.render("results", {
+      results: results, // Pass the results array to the results.ejs page
+    });
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).send("Error fetching results");
+  }
+});
 
 // Define a single route handler function
 app.get("/:page", (req, res) => {
@@ -27,10 +51,10 @@ app.get("/:page", (req, res) => {
 
   // Check the page parameter and render the corresponding template
   switch (page) {
-    case "hostel":
-    case "general":
-    case "cultural":
-    case "sports":
+    case "position1":
+    case "position2":
+    case "position3":
+    case "position4":
       res.render(page); // Render the corresponding template
       break;
     default:
@@ -38,42 +62,25 @@ app.get("/:page", (req, res) => {
   }
 });
 
+app.post("/submit", (req, res) => {
+  const selectedValue = req.body.selectField; // Assuming 'selectField' is the name of your select field
 
+  const newArray = [{ candidates: `${selectedValue}`, vote: 1 }];
 
-mongoose.connect('mongodb://0.0.0.0:27017/pollbooth').then(() => {
-    console.log('database connected')
-  }).catch(err => {
-    console.log('error while connecting to database', err)
-  })
-
-const itemsSchema = new mongoose.Schema({
-  candidates: String,
-  vote: Number
-}, { collection: 'results' });
-
-const Item = mongoose.model('results', itemsSchema);
-
-app.post('/submit', (req, res) => {
-  const selectedValue = req.body.selectField // Assuming 'selectField' is the name of your select field
-
-  const newArray = [
-    { candidates: `${selectedValue}`, vote: 1 }
-  ];
-  
   async function insertArray() {
     try {
       const result = await Item.insertMany(newArray);
-      console.log('Array inserted successfully');
+      console.log("Array inserted successfully");
     } catch (error) {
-      console.error('Error inserting array:', error);
+      console.error("Error inserting array:", error);
     }
   }
-  
+
   insertArray();
 
   res.redirect("/");
-})
+});
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`)
-})
+  console.log(`Server is running on http://localhost:${port}`);
+});

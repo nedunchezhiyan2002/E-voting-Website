@@ -2,52 +2,71 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <title>My EJS App</title>
-</head>
-<body> 
-  <div class="container-xl big-padding ">
-    <div class="row text-center  section-title">
-      <h2 class="fs-4">IITM - Online Poll</h2>
-      <p>
-        <% if (message) { %>
-          <%= message %>
-        <% } %>
-      </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>My EJS App</title>
+  </head>
+  <body>
+    <div class="container-xl big-padding">
+      <div class="row text-center section-title">
+        <h2 class="fs-4">Board of Directors Election</h2>
+        <p><% if (message) { %> <%= message %> <% } %></p>
 
-      <div class="row text-white text-center ">
-          <div class = "colored-box">
-            <a href="/hostel"><h1>Hostel Affairs Secratary</h1></a>
+        <div id="positions">
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div class="row">
+                <a href="/position1"><h1>Health Care</h1></a>
+              </div>
+              <div class="row">
+                <img height="150px" width="150px" src="img/healthcare.jpeg" />
+              </div>
+            </div>
           </div>
-        
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position2"><h1>Sports</h1></a>
+              </div>
+              <div class="row">
+                <img height="150px" width="150px" src="img/sports.jpeg" />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position3"><h1>Cultural</h1></a>
+              </div>
+              <div class="row">
+                <img height="150px" width="150px" src="img/cultural.jpeg" />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position3"><h1>Security</h1></a>
+              </div>
+              <div class="row">
+                <img height="150px" width="150px" src="img/security.jpeg" />
+              </div>
+            </div>
+          </div>
+
+          
       </div>
-
-      <div class="row text-white text-center  ">
-        <div class = "colored-box"><a href="/general"><h1>General Affairs Secratary</h1></a></div>
-      </div>
-
-      <div class="row text-white  text-center ">
-        <div class = "colored-box"><a href="/sports"><h1>Sports Affairs Secratary</h1></a></div>
-      </div>
-
-      <div class="row text-white  text-center ">
-        <div class = "colored-box"><a href="/cultural"><h1>Cultural Affairs Secratary</h1></a></div>
-      </div>
-
-      
-
-
-      
-       
     </div>
-  </div>
-  
-</body>
+  </body>
 </html>
-
 
 <%- include("partials/footer.ejs") -%>
