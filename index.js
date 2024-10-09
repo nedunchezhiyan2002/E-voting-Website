@@ -24,7 +24,13 @@ mongoose
 const itemsSchema = new mongoose.Schema({ candidates: String, vote: Number });
 const Item = mongoose.model("results", itemsSchema);
 
-app.get("/", (req, res) => {
+const userSchema = new mongoose.Schema({ name: String, password: String });
+const User = mongoose.model("users", itemsSchema);
+
+app.get("/", async (req, res) => {
+  res.render("signin");
+});
+app.get("/home", (req, res) => {
   const message = "Select Your Candidate for the respective department!";
   res.render("index", {
     message: message,
@@ -63,7 +69,8 @@ app.get("/:page", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
-  const selectedValue = req.body.selectField; // Assuming 'selectField' is the name of your select field
+  const selectedValue = req.body.selectField;
+  console.log(); // Assuming 'selectField' is the name of your select field
 
   const newArray = [{ candidates: `${selectedValue}`, vote: 1 }];
 
@@ -79,6 +86,17 @@ app.post("/submit", (req, res) => {
   insertArray();
 
   res.redirect("/");
+});
+
+app.post("/signin", async (req, res) => {
+  const users = await User.findOne(
+    { email: "admin@gmail.com" },
+    { projection: { _id: 0 } }
+  );
+  const email = req.body.email;
+  if (email === Object.values(users)[2].email) {
+    res.redirect("/home");
+  }
 });
 
 app.listen(port, () => {

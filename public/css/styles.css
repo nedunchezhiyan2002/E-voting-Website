@@ -1,86 +1,87 @@
+/* General Styles */
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   list-style: none;
-}
-
-a {
-  text-decoration: none;
-  outline: none;
-  color: #444;
-  display: inline-block;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #444;
-}
-
-.center {
-  text-align: center;
+  box-sizing: border-box;
+  font-family: "Muli", sans-serif !important;
 }
 
 body {
-  height: 100%;
-  font-family: "Poppins";
+  color: #444;
+  background-color: #f9f9f9;
   overflow-y: auto;
 }
 
-.colored-box {
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #f0f0f0; /* Change this color to your desired background color */
-  padding: 12px;
-  border-radius: 10px;
-  height: 100%;
-  width: 100%;
-}
-
-/* header and footer */
-.bg-primary {
-  background-color: #1abc9c !important;
-}
-
-.container-fluid {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
+/* Navbar Styles */
 .navbar {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px !important;
+  margin-left: 0px; /* Adjusted the left margin */
   border: 0;
   border-radius: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  letter-spacing: 5px;
+  margin-bottom: 10px;
+  background-color: #1abc9c !important; /* Navbar background color */
+  font-size: 16px;
+  letter-spacing: 1px;
+  height: 70px !important;
+}
+
+.navbar-brand {
+  color: whitesmoke !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+.navbar-nav {
+  margin-left: 10px; /* Adjust this value if needed */
+}
+
+.navbar-nav li a {
+  color: white !important; /* Text color for navbar items */
+  padding-left: 10px; /* Adjusted padding */
+  padding-right: 10px; /* Adjusted padding */
 }
 
 .navbar-nav li a:hover {
-  color: #1abc9c !important;
+  background-color: #16a085; /* Hover background color */
+  color: white !important; /* Text color on hover */
 }
 
-.footer-padding {
-  padding-bottom: 60px;
-}
-
-.footer {
-  position: fixed;
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("img/election-bg.jpg") no-repeat center center/cover;
+  color: white;
   text-align: center;
-  bottom: 0;
-  width: 100% !important;
-  height: 60px;
-  background-color: #1abc9c;
+  padding: 100px 10px;
+  margin: 30px 10px;
 }
 
-.footer p {
-  margin-top: 25px;
-  font-size: 12px;
-  color: #fff;
+.hero-section h1 {
+  font-size: 48px;
+  font-weight: bold;
 }
 
+.hero-section p {
+  font-size: 18px;
+}
+
+/* Section Title */
+.section-title {
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  color: #333;
+}
+
+.section-title p {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Positions Grid */
 #positions {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -88,9 +89,119 @@ body {
   padding-bottom: 50px;
   justify-content: center;
   align-items: center;
-  margin: 0 auto !important;
 }
 
-#position {
-  height: 250px;
+@media screen and (max-width: 768px) {
+  #positions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #positions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual Position Box */
+.colored-box {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.colored-box:hover {
+  transform: translateY(-5px);
+  background-color: #1abc9c;
+  color: white;
+}
+
+.colored-box a h1 {
+  font-size: 24px;
+  color: #1abc9c;
+}
+
+.colored-box:hover a h1 {
+  color: white;
+}
+
+/* Position Image */
+.position-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+.colored-box:hover .position-image {
+  transform: scale(1.1);
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #1abc9c;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative; /* Changed from fixed to relative */
+  bottom: 0;
+  width: 100%;
+  clear: both; /* Ensures the footer stays below other content */
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer .social-icons img {
+  width: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Add some padding at the bottom of the container to ensure no content overlaps with the footer */
+.container-xl {
+  padding-bottom: 10px; /* Adjust this value based on the footer height */
+  margin: 0px 50px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 32px;
+  }
+}
+
+.votcard {
+  background-color: green;
+  padding-bottom: 10px;
+}
+
+.card {
+  padding-bottom: 10px;
+}
+
+.signin-container {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 50px;
+}
+
+.signin-row {
+  width: 500px;
 }
