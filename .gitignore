@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.codesandbox
+/.devcontainer
 /.pnp
 .pnp.js
 
