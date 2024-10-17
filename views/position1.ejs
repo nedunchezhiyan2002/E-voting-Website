@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") -%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Hostel</title>
+  </head>
+  <body>
+    <div class="container-xl big-padding">
+      <div class="row section-title">
+        <h2 class="fs-4">Cast your vote for your prefered candidate!</h2>
+      </div>
+
+      <div class="row">
+        <% const candidates = [ { name: 'Ravi', image: '/img/ravi.jpeg' }, {
+        name: 'Kumar', image: '/img/kumar.jpeg' }, { name: 'Ramesh', image:
+        '/img/ramesh.jpeg' }, { name: 'Suresh', image: '/img/suresh.jpeg' } ];
+        %> <% candidates.forEach(candidate => { %>
+        <!-- Loop through candidates array -->
+        <div class="card col-lg-3 col-md-6">
+          <div class="text-white text-center mb-4 votcard shadow-md p-4 pt-5">
+            <img
+              src="<%= candidate.image %>"
+              alt="<%= candidate.name %>"
+              class="img-responsive"
+              style="width: 100%; height: 200px"
+            />
+            <h3 class="fw-bold"><%= candidate.name %></h3>
+            <form class="form-inline" action="/submit" method="post">
+              <input
+                type="hidden"
+                name="selectField"
+                value="<%= candidate.name %>"
+              />
+              <button
+                class="btn btn-danger fw-bolder px-4 ms-2 fs-8"
+                type="submit"
+              >
+                VOTE
+              </button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+        <!-- End of loop -->
+      </div>
+    </div>
+
+    <!-- Footer moved outside the container -->
+    <%- include("partials/footer.ejs") -%>
+  </body>
+</html>

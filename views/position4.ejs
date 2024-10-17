@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") -%>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <title>Hostel</title>
+    </head>
+    <body> 
+        <div class="container-xl big-padding">
+            <div class="row section-title">
+              <h2 class="fs-4">Vote Your Position4 candidate</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-white text-center mb-4 votcard shadow-md bg-white p-4 pt-5">
+                        <form class ="form-inline" action="/submit" method="post">
+                            <label ><h3 class = "fw-bold">Preference -</h3></label>
+                            <select class="form-control form-control-lg" name="selectField" id="selectField">
+                              <option value="ravi">Ravi</option>
+                              <option value="kumar">Kumar</option>
+                              <option value="ramesh">Ramesh</option>
+                              <option value="suresh">Suresh</option>
+                            </select>
+                            <button class="btn btn-danger fw-bolder px-4 ms-2 fs-8" type="submit">VOTE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+</html>
+
+
+<%- include("partials/footer.ejs") -%>

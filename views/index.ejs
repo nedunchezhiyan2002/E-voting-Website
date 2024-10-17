@@ -1,0 +1,100 @@
+<%- include("partials/header.ejs") -%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Board of Directors Election</title>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Board of Directors Election</h1>
+      <p>Your vote shapes the future!</p>
+    </section>
+
+    <!-- Main container for content -->
+    <div class="ml-2 container-xl big-padding">
+      <div class="row text-center section-title">
+        <h2 class="fs-4">Available Positions</h2>
+        <p><% if (message) { %> <%= message %> <% } %></p>
+
+        <!-- Election Positions -->
+        <div class="ml-2" id="positions">
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div class="row">
+                <a href="/position1"><h1>Health Care</h1></a>
+              </div>
+              <div class="row">
+                <img
+                  class="position-image"
+                  src="img/healthcare.jpeg"
+                  alt="Health Care"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position2"><h1>Sports</h1></a>
+              </div>
+              <div class="row">
+                <img
+                  class="position-image"
+                  src="img/sports.jpeg"
+                  alt="Sports"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position3"><h1>Cultural</h1></a>
+              </div>
+              <div class="row">
+                <img
+                  class="position-image"
+                  src="img/cultural.jpeg"
+                  alt="Cultural"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-white text-center" id="position">
+            <div class="container colored-box">
+              <div>
+                <a href="/position4"><h1>Security</h1></a>
+              </div>
+              <div class="row">
+                <img
+                  class="position-image"
+                  src="img/security.jpeg"
+                  alt="Security"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <%- include("partials/footer.ejs") -%>
+  </body>
+</html>

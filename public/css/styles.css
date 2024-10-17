@@ -1,0 +1,219 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Muli", sans-serif !important;
+}
+
+body {
+  color: #444;
+  background-color: #f9f9f9;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh!important;
+}
+
+/* Navbar Styles */
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px !important;
+  margin-left: 0px; /* Adjusted the left margin */
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 10px;
+  background-color: #1abc9c !important; /* Navbar background color */
+  font-size: 16px;
+  letter-spacing: 1px;
+  height: 70px !important;
+}
+
+.navbar-brand {
+  color: whitesmoke !important;
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+.navbar-nav {
+  margin-left: 10px; /* Adjust this value if needed */
+}
+
+.navbar-nav li a {
+  color: white !important; /* Text color for navbar items */
+  padding-left: 10px; /* Adjusted padding */
+  padding-right: 10px; /* Adjusted padding */
+}
+
+.navbar-nav li a:hover {
+  background-color: #16a085; /* Hover background color */
+  color: white !important; /* Text color on hover */
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("img/election-bg.jpg") no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 10px;
+  margin: 30px 10px;
+}
+
+.hero-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 18px;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 200;
+  letter-spacing: -1px;
+  font-size: 36px;
+  color: #333;
+}
+
+.section-title p {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Positions Grid */
+#positions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  #positions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #positions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual Position Box */
+.colored-box {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.colored-box:hover {
+  transform: translateY(-5px);
+  background-color: #1abc9c;
+  color: white;
+}
+
+.colored-box a h1 {
+  font-size: 24px;
+  color: #1abc9c;
+}
+
+.colored-box:hover a h1 {
+  color: white;
+}
+
+/* Position Image */
+.position-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+.colored-box:hover .position-image {
+  transform: scale(1.1);
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #1abc9c;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative; /* Changed from fixed to relative */
+  bottom: 0!important;
+  margin-top: auto!important;
+  width: 100%;
+  clear: both; /* Ensures the footer stays below other content */
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer .social-icons img {
+  width: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Add some padding at the bottom of the container to ensure no content overlaps with the footer */
+.container-xl {
+  padding-bottom: 10px; /* Adjust this value based on the footer height */
+  margin: 0px 50px;
+  flex:1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 32px;
+  }
+}
+
+.votcard {
+  background-color: green;
+  padding-bottom: 10px;
+}
+
+.card {
+  padding-bottom: 10px;
+}
+
+.signin-container {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 50px;
+  flex:1;
+}
+
+.signin-row {
+  width: 500px;
+}
