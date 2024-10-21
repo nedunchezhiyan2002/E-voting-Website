@@ -4,5 +4,5 @@ Developed an online voting platform utilizing JavaScript, EJS, NodeJS, and Mongo
 Implemented a user management system allowing administrators to conduct polls and post results.
 Utilized MongoDB for database management to store poll data and user information securely.
 
-To Test:-
-Use -> admin@gmail.com -- admin
+To Test:- <br/>
+Use -> admin@gmail.com and password -> admin
